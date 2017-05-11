@@ -40,6 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BinaryTreeNode.cs" />
+    <Compile Include="BST.cs" />
+    <Compile Include="CoinChange.cs" />
+    <Compile Include="ProductOfAllInts.cs" />
     <Compile Include="StockSell.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
