@@ -43,6 +43,28 @@ namespace Practice2017.Tests
         }
 
         [TestMethod]
+        public void TestBigCalculate()
+        {
+            double[] stockPrices = new double[100000];
+
+            Random rand = new Random();
+
+            for (int i = 0; i < stockPrices.Length; i++)
+            {
+                stockPrices[i] = rand.NextDouble() * (10000 - 100) + 100;
+            }
+
+            stockPrices[20] = 50;
+            stockPrices[5000] = 11000;
+
+            var stockSell = new StockSell();
+
+            var result = stockSell.CalculateMaxProfit(stockPrices);
+
+            Assert.AreEqual(11000 - 50, result);
+        }
+
+        [TestMethod]
         public void TestNull()
         {
             double[] stockPrices = null;

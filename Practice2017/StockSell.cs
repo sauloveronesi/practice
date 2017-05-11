@@ -2,31 +2,41 @@
 {
     public class StockSell
     {
+        public double CalculateMaxProfit(double[] prices)
+        {
+            var maxProfitValues = GetMaxProfit(prices);
+
+            if (maxProfitValues == null)
+                return 0;
+
+            return maxProfitValues[1] - maxProfitValues[0];
+        }
+
         public double[] GetMaxProfit(double[] prices)
         {
             if (prices == null || prices.Length < 1)
                 return null;
 
-            int min = 0;
+            int minPosition = 0;
             int maxPosition = 0;
             
-            double max = int.MinValue;
+            double maxSoFar = int.MinValue;
 
             for (int i = 1; i < prices.Length; i++)
             {
-                var sum = prices[i] - prices[min];
+                var sum = prices[i] - prices[minPosition];
 
-                if (prices[i] < prices[min])
-                    min = i;
+                if (prices[i] < prices[minPosition])
+                    minPosition = i;
 
-                if (sum > max)
+                if (sum > maxSoFar)
                 {
                     maxPosition = i;
-                    max = sum;
+                    maxSoFar = sum;
                 }
             }
 
-            return new double[] { prices[min], prices[maxPosition] };
+            return new double[] { prices[minPosition], prices[maxPosition] };
         }
     }
 }
